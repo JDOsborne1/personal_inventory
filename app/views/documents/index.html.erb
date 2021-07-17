@@ -1,0 +1,15 @@
+<h1>Documents Homepage</h1>
+<p>Find me in app/views/documents/index.html.erb</p>
+
+This is the entry area to view all documents managed by this system.
+
+<h3><%= link_to "New Document", new_document_path %></h3>
+
+<h3>Existing document</h3> 
+<ul>
+  <% @documents.each do  |document| %>
+    <li>
+      <%= link_to document.name, document  %>
+    </li>
+  <% end %>
+</ul>

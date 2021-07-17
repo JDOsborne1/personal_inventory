@@ -1,0 +1,17 @@
+<h1> New Document </h1>
+
+<%= form_with model: @document do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :attachment %><br>
+    <%= form.file_field :attachment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

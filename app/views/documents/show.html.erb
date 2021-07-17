@@ -1,0 +1,17 @@
+
+
+<br> <br> <br> <br>
+
+<h1> <%= @document.name %> </h1>
+
+<p> possible content </p>
+
+ <% if @document.attachment.representable? %>
+      <%= link_to rails_blob_path(@document.attachment, disposition: "attachment") do %>
+        <%= image_tag @document.attachment.representation(resize_to_limit: [100, 100]) %>
+      <% end %>
+      <% else %>
+        <%= link_to rails_blob_path(@document.attachment, disposition: "attachment") do %>
+          <%= image_tag "confusedtravolta.jpg", alt: "Download file" %>
+        <% end %>
+      <% end %>
