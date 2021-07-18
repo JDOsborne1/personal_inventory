@@ -15,3 +15,13 @@
           <%= image_tag "confusedtravolta.jpg", alt: "Download file" %>
         <% end %>
       <% end %>
+      
+
+      <p>Tags: <%= raw @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>     
+
+      <ul> 
+  <li> <%= link_to "Edit", edit_document_path(@document) %> </li>
+      </ul>
+
+
+    <%= link_to "home", index_path(@document) %>

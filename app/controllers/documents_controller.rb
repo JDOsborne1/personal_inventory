@@ -1,6 +1,10 @@
 class DocumentsController < ApplicationController
   def index
-    @documents = Document.all
+    if params[:tag]
+      @documents = Document.tagged_with(params[:tag])
+    else
+      @documents = Document.all
+    end
   end
    
   def show
@@ -11,7 +15,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(article_params)
+    @document = Document.new(document_params)
     
     if @document.save
       redirect_to @document
@@ -20,9 +24,24 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def edit
+    @document = Document.find(params[:id])
+    
+  end
+
+  def update
+    @document = Document.find(params[:id])
+
+    if @document.update(document_params)
+      redirect_to @document
+    else 
+      render :edit
+    end
+  end
+
   private
-    def article_params
-       params.require(:document).permit(:name, :attachment)
+    def document_params
+       params.require(:document).permit(:name, :attachment, :tag_list)
     end
 end
 

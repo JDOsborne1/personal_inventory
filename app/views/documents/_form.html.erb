@@ -1,0 +1,23 @@
+<%= form_with model: document do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% document.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :attachment %><br>
+    <%= form.file_field :attachment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_list, "Tags (seperated by commas)" %><br>
+    <%= form.text_field :tag_list %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
