@@ -1,3 +1,28 @@
+
+<body class = "h-screen bg-green-100">
+
 <h1 class = "text-3xl text-blue-400 text-center my-10">Edit Document</h1>
 
+
+<div class = "mx-auto px-auto container text-center max-w-sm rounded-lg shadow-lg">
+  
+<% if @document.attachment.representable? %>
+  <%= link_to rails_blob_path(@document.attachment, disposition: "attachment") do %>
+    <%= image_tag @document.attachment.representation(resize_to_limit: [500, 500]) %>
+  <% end %>
+
+<% else %>
+  <%= link_to rails_blob_path(@document.attachment, disposition: "attachment") do %>
+    <%= image_tag "confusedtravolta.jpg", alt: "Download file" %>
+  <% end %>
+
+<% end %>
+</div>
+
+<br>
+
+
+
 <%= render "form", document: @document %>
+
+</body>

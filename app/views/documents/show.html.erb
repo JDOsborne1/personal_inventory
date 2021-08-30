@@ -1,6 +1,7 @@
 
 
 
+<body class = "h-screen bg-green-100">
 
 <h1 class="text-xl text-red-500 text-center my-8"> <%= @document.name %> </h1>
 
@@ -30,4 +31,4 @@
 <button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white text-center "> <%= link_to "Edit", edit_document_path(@document) %> </button> 
    <button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white text-center ">  <%= link_to "Destroy", document_path(@document), method: :delete, data: {confirm: "Truly, you wish to be done with this forever?"} %> </button> 
 </div>
-
+</body>
