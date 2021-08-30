@@ -1,15 +1,20 @@
-<h1>Documents Homepage</h1>
-<p>Find me in app/views/documents/index.html.erb</p>
-
+<h1 class= "text-4xl text-red-500 text-center my-8">Documents Homepage</h1>
+<p class="italic my-8 text-center">Find me in app/views/documents/index.html.erb
+<br>
 This is the entry area to view all documents managed by this system.
-
-<h3><%= link_to "New Document", new_document_path %></h3>
-
-<h3>Existing document</h3> 
-<ul>
+<br>
+</p>
+<div class = "text-center">
+<button class= "text-xl text-center font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white"><%= link_to "New Document", new_document_path %></button>
+</div> 
+<br>
+<h3 class = "text-xl text-center">Existing document</h3>
+<div class = "text-center">
+<ul class = "list-disc font-mono leading-loose">
   <% @documents.each do  |document| %>
-    <li>
-      <%= link_to document.name, document  %>
+    <li >
+      <div><%= link_to document.name, document  %></div>
     </li>
   <% end %>
 </ul>
+<div>

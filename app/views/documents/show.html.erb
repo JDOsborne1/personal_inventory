@@ -4,24 +4,10 @@
 
 <h1 class="text-xl text-red-500 text-center my-8"> <%= @document.name %> </h1>
 
-<h2> <%= link_to "Home", documents_path %>  </h2>
+<h2 class="text-center text-l"> <%= link_to "Home", documents_path %>  </h2>
 
-<div class="bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
-  <div class="sm:flex sm:items-left px-6 py-4">
-    <img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4" alt="">
-    <div class="text-center sm:text-left sm:flex-grow">
-      <div class="mb-4">
-        <p class="text-xl leading-tight">Adam Wathan</p>
-        <p class="text-sm leading-tight text-grey-dark">Developer at NothingWorks Inc.</p>
-      </div>
-      <div>
-        <button class="text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-black border border-purple text-white hover:bg-white hover:text-black">Message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class = "mx-auto px-auto container border border-red-500 text-center">
+<br><br>
+<div class = "mx-auto px-auto container text-center max-w-sm rounded-lg shadow-lg">
 <% if @document.attachment.representable? %>
   <%= link_to rails_blob_path(@document.attachment, disposition: "attachment") do %>
     <%= image_tag @document.attachment.representation(resize_to_limit: [500, 500]) %>
@@ -32,11 +18,13 @@
   <% end %>
 <% end %>
 </div>
-
-<p>Tags: <%= raw @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>     
-
-<ul class = "text-center"> 
-  <li> <button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white "> <%= link_to "Edit", edit_document_path(@document) %> </button> </li>
-  <li> <button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white ">  <%= link_to "Destroy", document_path(@document), method: :delete, data: {confirm: "Truly, you wish to be done with this forever?"} %> </button> </li>
-</ul>
+<br>
+<br>
+<p class="text-l text-center">Tags: <%= raw @document.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>     
+<br>
+<br>
+<div class = "text-center">
+<button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white text-center "> <%= link_to "Edit", edit_document_path(@document) %> </button> 
+   <button class= "font-semibold rounded-full px-4 py-1 border border-black hover:bg-black hover:text-white text-center ">  <%= link_to "Destroy", document_path(@document), method: :delete, data: {confirm: "Truly, you wish to be done with this forever?"} %> </button> 
+</div>
 
