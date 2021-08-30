@@ -1,23 +1,49 @@
 <%= form_with model: document do |form| %>
-  <div>
+  <div class = " text-lg text-center max-w-sm mx-auto">
     <%= form.label :name %><br>
     <%= form.text_field :name %>
     <% document.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+</div>
+<br> <br>
+<div class = "mx-auto max-w-sm text-center"> 
+<button class="text-lg font-semibold rounded-full px-4 py-1 border border-black text-center hover:bg-black hover:text-white"> <%= link_to "Home", documents_path %>  </button>
+</div>
 
-  <div>
+  <br><br>
+<div class = "mx-auto px-auto container text-center max-w-sm rounded-lg shadow-lg">
+<% if document.attachment.representable? %>
+  <%= link_to rails_blob_path(document.attachment, disposition: "attachment") do %>
+    <%= image_tag document.attachment.representation(resize_to_limit: [500, 500]) %>
+  <% end %>
+<% else %>
+  <%= link_to rails_blob_path(document.attachment, disposition: "attachment") do %>
+    <%= image_tag "confusedtravolta.jpg", alt: "Download file" %>
+  <% end %>
+<% end %>
+</div>
+<br>
+<br>
+
+
+  <div class = "max-w-sm mx-auto container border px-auto text-center">
+  <div class = "text-lg ">
     <%= form.label :attachment %><br>
     <%= form.file_field :attachment %>
   </div>
-
-  <div class="field">
+  <br><br>
+  <div class="text-lg  my-auto">
     <%= form.label :tag_list, "Tags (seperated by commas)" %><br>
     <%= form.text_field :tag_list %>
   </div>
+  <br><br>
+  <button class = "text-lg font-semibold rounded-full px-4 py-1 border border-black text-center hover:bg-black hover:text-white">
+    <%= form.submit "Execute",  class: "btn btn-primary" %>
+  </button>
 
-  <div>
-    <%= form.submit %>
   </div>
+  <br>
+  <br>
+
 <% end %>
